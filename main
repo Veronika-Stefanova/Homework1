@@ -1,0 +1,132 @@
+public class University {
+    Teacher[] teachers = new Teacher[3];
+    Student[] students = new Student[3];
+    University (){
+        for (int i=0; i<3;i++){
+            teachers[i]= new Teacher();
+        }
+            for (int i = 0; i < 3; i++) students[i] = new Student();
+        }
+    void main() {
+        for (int i = 0; i < 3; i++) {
+            teachers[i].job();
+            System.out.println("Information about teachers: ");
+            teachers[i].informationT();
+        }
+        for (int i = 0; i < 3; i++) {
+            students[i].information();
+        }
+    }
+}
+public class Teacher {
+
+    int age;
+    private String name;
+    String subject;
+
+    Teacher(int age, String name, String subject) {
+        this.age = age;
+        this.name = name;
+        this.subject = subject;
+        System.out.println("Student age&name&subject Constructor");
+    }
+
+    void setName(String name) {
+        this.name = name;
+    }
+
+    String getNameT() {
+        return this.name;
+    }
+
+    Student[] students = new Student[3];
+
+    Teacher() {
+        for (int i = 0; i < 3; i++) students[i] = new Student();
+    }
+    public void information() {
+        for (int i = 0; i < 3; i++) {
+            students[i].information();
+        }
+    }
+
+        public void methods() {
+            for (int i = 0; i < 3; i++) {
+                students[i].methods();
+                students[i].methods();
+            }
+        }
+    void job() {
+        if (age <= 60) {
+            System.out.println("Hired!");
+        } else {
+            System.out.println("Not hired");
+        }
+    }
+    void informationT(){
+        System.out.println("Age: "+this.age + ", name: " + this.getNameT() + ", subjects: " + this.subject);
+    }
+}
+
+public class Student {
+    int group;
+    private String name;
+    int numberOfLessons;
+    Student() {
+        System.out.println("Student default Constructor");
+    }
+    Student( int group, String name, int numberOfLessons) {
+        this.group = group;
+        this.name = name;
+        this.numberOfLessons = numberOfLessons;
+        System.out.println("Student group&name&numberOfLessons Constructor");
+    }
+    void setName (String name){
+        this.name = name;
+    }
+    String getName(){
+        return this.name;
+    }
+    void mood() {
+        if (numberOfLessons <= 5) {
+            System.out.println("Happy!!!");
+        } else {
+            System.out.println("Boredom:(");
+        }
+    }
+    void offset() {
+        if (group == 1) {
+            System.out.println("Automatic!");
+        } else {
+            System.out.println("Exam");
+        }
+    }
+        void information(){
+            System.out.println("Group: "+this.group + ", name: " + this.getName() + ", number of lessons: " + this.numberOfLessons);
+        }
+    public void methods(){
+        mood();
+        offset();
+    }
+    }
+
+public class Main {
+public static void main(String[] args) {
+    Student st1 = new Student(2, "Lena",5);
+    Student st2 = new Student(1, "Misha",7);
+    Student st3 = new Student(3, "Dasha",6);
+     st1.mood();
+     st1.offset();
+     st1.information();
+    st2.information();
+    st3.information();
+     st1.methods();
+    Teacher t1 = new Teacher(45,"Yuri Anatolievich","History");
+    Teacher t2 = new Teacher(26,"Elena Vladimirovna","English");
+    Teacher t3 = new Teacher(60,"Tamara Mihailovna","Mathematics");
+    University u = new University();
+    t1.job();
+    t1.informationT();
+    st1.information();
+}
+}
